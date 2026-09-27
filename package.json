@@ -1,0 +1,31 @@
+{
+  "name": "cultureapp",
+  "version": "1.0.0",
+  "description": "culture app",
+  "homepage": "https://github.com/langgg621/CultureApp#readme",
+  "bugs": {
+    "url": "https://github.com/langgg621/CultureApp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/langgg621/CultureApp.git"
+  },
+  "license": "ISC",
+  "author": "langgg621",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.4",
+    "uuid": "^14.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
