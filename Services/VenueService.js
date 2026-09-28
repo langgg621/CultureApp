@@ -1,4 +1,5 @@
 const { Venue } = require('../Entities');
+const { HashUtil, IdGenerator, ResponseUtil } = require('../Utils');
 
 class VenueService {
     constructor(db) {
@@ -30,20 +31,20 @@ class VenueService {
     async insert(venueData) {
         const venue = venueData instanceof Venue ? venueData : new Venue(venueData);
         await this.db.query('CALL usp_Venue_Insert(?, ?, ?, ?, ?, ?)', [
-            venue.VenueID,
+            venue.VenueID = IdGenerator.generateId(),
             venue.VenueName,
             venue.VenueAddress,
             venue.Capacity,
             venue.SeatingRow,
             venue.SeatingCol
         ]);
-        return venue;
+        return true;
     }
 
     async update(venueData) {
         const venue = venueData instanceof Venue ? venueData : new Venue(venueData);
         await this.db.query('CALL usp_Venue_Update(?, ?, ?, ?, ?, ?)', [
-            venue.VenueID,
+            venue.VenueID = IdGenerator.generateId(),
             venue.VenueName,
             venue.VenueAddress,
             venue.Capacity,

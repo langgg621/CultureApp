@@ -1,4 +1,5 @@
 const { Event } = require('../Entities');
+const { HashUtil, IdGenerator, ResponseUtil } = require('../Utils');
 
 class EventService {
     constructor(db) {
@@ -23,19 +24,19 @@ class EventService {
         return rows[0] || [];
     }
 
-    async insert(eventData, userId) {
+    async insert(eventData, UserID) {
         const event = eventData instanceof Event ? eventData : new Event(eventData);
         await this.db.query('CALL usp_Event_Insert(?, ?, ?, ?, ?, ?, ?, ?)', [
-            event.EventID,
+            event.EventID = IdGenerator.generateId(),
             event.EventName,
             event.Description,
             event.CategoryID,
             event.VenueID,
-            userId,
+            UserID,
             event.EventDate,
             event.Status
         ]);
-        return event;
+        return true;
     }
 
     async update(eventData) {

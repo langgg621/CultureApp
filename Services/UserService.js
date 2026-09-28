@@ -19,10 +19,10 @@ class UserService {
         const user = userData instanceof User ? userData : new User(userData);
         // Check Username 
        const [checkUserRows] = await this.db.query('CALL usp_User_CheckExistUser(?)', [user.UserName]);
-        const userCount = checkUserRows[0][0]['count(*)'] || checkUserRows[0][0]['COUNT(*)'];
+        const userCount = checkUserRows[0][0].Total;
         // Check Email
         const [checkEmailRows] = await this.db.query('CALL usp_User_CheckEmail(?)', [user.Email]);
-        const emailCount = checkEmailRows[0][0]['count(*)'] || checkEmailRows[0][0]['COUNT(*)'];
+        const emailCount = checkEmailRows[0][0].Total;
         if (userCount > 0 || emailCount > 0) {
             throw new Error('Account already exists.');
         }

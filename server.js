@@ -28,18 +28,11 @@ const db = mysql.createPool({
         const connection = await db.getConnection();
         console.log('MySQL Connected successfully!');
         connection.release();
-    } catch (err) {
-        console.error('MySQL Connection Error:', err.message);
-    }
-})();
+    } catch (err) {console.error('MySQL Connection Error:', err.message);}})();
 
 // Route check status Server (Health check)
-app.get('/', (req, res) => {
-    res.json({
-        success: true,
-        message: 'CultureApp API Server is running'
-    });
-});
+app.get('/', (req, res) => {res.json({success: true,message: 'CultureApp API Server is running'});});
+
 // 3. Register API Routes
 app.use('/api', routes(db));
 
@@ -49,6 +42,4 @@ app.use(errorHandler);    // Error Server 500
 
 // 5. Start Server
 const PORT = process.env.PORT;
-app.listen(PORT, () => {
-    console.log(`Server running http://localhost:${PORT}`);
-});
+app.listen(PORT, () => {console.log(`Server running http://localhost:${PORT}`);});

@@ -1,4 +1,5 @@
 const { VenueService } = require('../Services');
+const { ResponseUtil, IdGenerator, DateTimeUtil } = require('../Utils');
 
 class VenueController {
     constructor(db) {
@@ -21,7 +22,7 @@ class VenueController {
             const { id } = req.params;
             const venue = await this.venueService.getById(id);
             if (!venue) {
-                return res.status(404).json({ success: false, message: 'Không tìm thấy địa điểm' });
+                return res.status(404).json({ success: false, message: 'Location not found' });
             }
             return res.json({ success: true, data: venue });
         } catch (error) {
@@ -64,7 +65,7 @@ class VenueController {
         try {
             const { id } = req.params;
             await this.venueService.delete(id);
-            return res.json({ success: true, message: 'Xóa địa điểm thành công' });
+            return res.json({ success: true, message: 'Location successfully deleted.' });
         } catch (error) {
             return res.status(500).json({ success: false, message: error.message });
         }

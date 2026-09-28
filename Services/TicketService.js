@@ -1,4 +1,5 @@
 const { Ticket } = require('../Entities');
+const { HashUtil, IdGenerator, ResponseUtil } = require('../Utils');
 
 class TicketService {
     constructor(db) {
@@ -21,13 +22,13 @@ class TicketService {
     async insert(ticketData) {
         const ticket = ticketData instanceof Ticket ? ticketData : new Ticket(ticketData);
         await this.db.query('CALL usp_Ticket_Insert(?, ?, ?, ?, ?)', [
-            ticket.TicketID,
+            ticket.TicketID = IdGenerator.generateId(),
             ticket.EventID,
             ticket.SeatRow,
             ticket.SeatNumber,
             ticket.Price
         ]);
-        return ticket;
+        return true;
     }
 
     async update(ticketData) {

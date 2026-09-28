@@ -1,8 +1,9 @@
 const { Booking } = require('../Entities');
+const { HashUtil, IdGenerator, ResponseUtil } = require('../Utils');
 
 class BookingService {
     constructor(db) {
-        this.db = db; // mysql2 pool hoặc connection
+        this.db = db; 
     }
 
     async getById(bookingId) {
@@ -20,18 +21,16 @@ class BookingService {
         return rows[0] || [];
     }
 
-    async insert(bookingData) {
+    async insert(bookingData, UserID) {
         const booking = bookingData instanceof Booking ? bookingData : new Booking(bookingData);
-        await this.db.query('CALL usp_Booking_Insert(?, ?, ?, ?, ?, ?)', [
-            booking.BookingID,
-            booking.UserID,
+        await this.db.query('CALL usp_Booking_Insert(?, ?, ?, ?, ?)', [
+            booking.BookingID = IdGenerator.generateId,
+            UserID,
             booking.EventID,
-            booking.BookingCode,
-            booking.CreateDate_Tick,
-            booking.CreateDate,
+            booking.BookingCode = IdGenerator.BookingCode,
             booking.ExpiredAt
         ]);
-        return booking;
+        return true;
     }
 
     async updateStatus(bookingId, status) {
