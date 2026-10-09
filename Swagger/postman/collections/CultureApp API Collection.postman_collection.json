@@ -1,0 +1,1426 @@
+{
+  "info": {
+    "_postman_id": "63fb9b3d-fff6-4bfa-8406-f256fac8a19f",
+    "name": "CultureApp API Collection",
+    "description": "Full Postman Collection for CultureApp Backend Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Users",
+      "item": [
+        {
+          "name": "Register",
+          "id": "bc6a91b2-8894-4308-9994-89332a979575",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"UserName\": \"admin\",\n  \"Password\": \"abc123\",\n  \"FullName\": \"Admin\",\n  \"Email\": \"admin@example.com\",\n  \"PhoneNumber\": \"0987654322\",\n  \"Role\": 3,\n  \"Birthday\": \"1995-05-15\",\n  \"Sex\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "id": "1c91c9d3-fdde-48f1-b71e-d0ef327659c5",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"UserName\": \"admin\",\n  \"Password\": \"abc123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetAll",
+          "id": "c7c4b88a-be0c-4208-b7af-77ae2f2fb6fb",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users?pageIndex=1&pageSize=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetById",
+          "id": "2b6748fc-f23f-4bd2-aab6-a9b1a120c0b6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiJkZTRkMWVmMC1lNzYyLTRlNzQtYTc3Ny03YzVhMjg0OWM4MWEiLCJVc2VyTmFtZSI6ImpvaG5fZG9lIiwiUm9sZSI6MSwiaWF0IjoxNzkxNTQzMjg0LCJleHAiOjE3OTE2Mjk2ODR9.VeVoPKBTtaEkdVawLILbXBToydVnjbrVtY7lSFp1gHY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/id/de4d1ef0-e762-4e74-a777-7c5a2849c81a",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "id",
+                "de4d1ef0-e762-4e74-a777-7c5a2849c81a"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateProfile",
+          "id": "918dc79c-8561-4e6b-bdc4-2fd8d9aff7d7",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"FullName\": \"Admin Updated\",\n  \"PhoneNumber\": \"0912345678\",\n  \"Birthday\": \"1995-05-15\",\n  \"Sex\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "79adfffb-d4a7-453f-8434-6f94163ec121"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ChangePassword",
+          "id": "ee5e9670-e6d3-4c5d-9309-b7ce1a0288c3",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"oldPassword\": \"NewPassword123\",\n  \"newPassword\": \"abc123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/:id/change-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":id",
+                "change-password"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "79adfffb-d4a7-453f-8434-6f94163ec121"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateRole",
+          "id": "43fddeb7-72a7-45a0-b426-000676dd0d5e",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/:id/role",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":id",
+                "role"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "USER_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteAccount",
+          "id": "6b03cdf4-8835-4806-8a6f-5b496a40d673",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "USER_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "3aa8e132-917d-4fee-99df-8b703e75c6d5"
+    },
+    {
+      "name": "2. Categories",
+      "item": [
+        {
+          "name": "GetAll",
+          "id": "1fbc8aa9-9902-45eb-811f-573424758ec2",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/categories?pageIndex=1&pageSize=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "categories"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetById",
+          "id": "46b6ab82-a8d8-432f-898f-ef862b217059",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/categories/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "ee8609ab-e161-4cf9-b963-fffbd23536df"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create",
+          "id": "3bcf42ba-0fde-4e0a-9a0a-d52dbe449864",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"Music Concert\",\n  \"Description\": \"Live music shows and concerts\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update",
+          "id": "eef8a26b-1c0f-4ade-b51d-810973553376",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"Classical Concert\",\n  \"Description\": \"Symphony and orchestra\",\n  \"IsActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/categories/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "d80d8f72-f123-4c34-a5f8-dc8de15fee85"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "id": "37fa0885-0abf-4372-aacc-ad2cc5941036",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/categories/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "d80d8f72-f123-4c34-a5f8-dc8de15fee85"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "6fc93a7c-d0ef-405d-ae6f-14e3ba5a1240"
+    },
+    {
+      "name": "3. Venues",
+      "item": [
+        {
+          "name": "GetAll",
+          "id": "94f43cd3-0730-4afb-8e9a-7fa2edbd0437",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/venues/getall?pageIndex=1&pageSize=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "venues",
+                "getall"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetById",
+          "id": "9e51ae58-d463-4ba1-9908-a066c955f434",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/venues/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "venues",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "cb8433c3-9776-4443-adca-d8ba37189d4c"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetSeats",
+          "id": "86d5f554-8933-4384-b400-efe09d82df87",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/venues/:id/seats",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "venues",
+                ":id",
+                "seats"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "cb8433c3-9776-4443-adca-d8ba37189d4c"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetStatsByTime",
+          "id": "2f6aa2e6-0fc5-4a07-b8ad-325953f3257c",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/venues/:id/time?startDate=2026-01-01&endDate=2026-12-31",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "venues",
+                ":id",
+                "time"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2026-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-12-31"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "VENUE_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create",
+          "id": "7e61f4c4-d786-4a57-80c7-f37f6d4abac5",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"VenueName\": \"Hanoi Opera House\",\n  \"VenueAddress\": \"1 Trang Tien, Hoan Kiem, Hanoi\",\n  \"Capacity\": 600,\n  \"SeatingRow\": 10,\n  \"SeatingCol\": \"10\",\n  \"VipRow\": 3,\n  \"VVipRow\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/venues/insert",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "venues",
+                "insert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update",
+          "id": "a2e4e2d9-4c21-49cf-9aef-9db636ed1a35",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"VenueName\": \"Hanoi Opera House Grand\",\n  \"VenueAddress\": \"1 Trang Tien, Hanoi\",\n  \"SeatingRow\": 12,\n  \"SeatingCol\": \"12\",\n  \"VipRow\": 4,\n  \"VVipRow\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/venues/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "venues",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "cb8433c3-9776-4443-adca-d8ba37189d4c"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateSeatType",
+          "id": "ca21f4b1-5f23-436f-aff8-7b26b65ac114",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"seatType\": \"VIP\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/venues/seats/:seatId/type",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "venues",
+                "seats",
+                ":seatId",
+                "type"
+              ],
+              "variable": [
+                {
+                  "key": "seatId",
+                  "value": "SEAT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "id": "80aa0e26-4d0f-441b-b93f-d6128c87bd2e",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/venues/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "venues",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "VENUE_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "27aba2cb-4dae-4e04-b010-20b60437fe2d"
+    },
+    {
+      "name": "4. Events",
+      "item": [
+        {
+          "name": "GetAll",
+          "id": "f9aa6610-249d-4f98-9168-90b0edf4ea1e",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events?pageIndex=1&pageSize=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SearchAndFilter",
+          "id": "513f6c61-a54c-442f-bf38-8c47ba00bedc",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/search?categoryId=&venueId=&sortBy=date&pageIndex=1&pageSize=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "categoryId",
+                  "value": ""
+                },
+                {
+                  "key": "venueId",
+                  "value": ""
+                },
+                {
+                  "key": "minPrice",
+                  "value": "0",
+                  "disabled": true
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "500000",
+                  "disabled": true
+                },
+                {
+                  "key": "sortBy",
+                  "value": "date"
+                },
+                {
+                  "key": "pageIndex",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetById",
+          "id": "af753031-fc03-4f57-b529-0c8894177691",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "EVENT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create",
+          "id": "46536ff6-626c-4154-828b-5d61097bbf5f",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"EventName\": \"Rock Symphony 2026\",\n  \"Description\": \"An incredible rock music event\",\n  \"CategoryID\": \"9b89b5af-b889-4b1c-88d0-314d2202232f\",\n  \"VenueID\": \"37473cd0-7174-4b4a-be0b-1f495d5bcb80\",\n  \"EventDate\": \"2026-11-20 20:00:00\",\n  \"Status\": 1,\n  \"PriceBasic\": 200000,\n  \"PriceVIP\": 400000,\n  \"PriceVVIP\": 700000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/events/insert",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                "insert"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update",
+          "id": "4833b2d5-d475-476b-8f77-78fc2baebd1b",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"EventName\": \"Rock Symphony 2026 Extended\",\n  \"Description\": \"Updated description\",\n  \"PriceBasic\": 250000,\n  \"PriceVIP\": 450000,\n  \"PriceVVIP\": 800000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/events/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "EVENT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateStatus",
+          "id": "8335d015-ec33-4d07-a464-47b958793573",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/events/:id/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":id",
+                "status"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "EVENT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "id": "bd11453b-c021-4a57-82e4-0fdf6e98a233",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "EVENT_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "edd08f0e-3153-4ff9-b322-45294db41058"
+    },
+    {
+      "name": "5. Tickets",
+      "item": [
+        {
+          "name": "GetById",
+          "id": "65e3b8a6-4a7c-4142-b54c-985fac7b6bbb",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tickets/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tickets",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "TICKET_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetByEventId",
+          "id": "f99ca8e2-1e15-4133-aa47-d916ae687124",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tickets/event/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tickets",
+                "event",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "8e7d4da2-9a60-4c9c-9eaf-04f7900f49bb"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetAvailableByEvent",
+          "id": "355bb5fe-6309-4bb2-977f-07223d37dae5",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tickets/event/:eventId/available",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tickets",
+                "event",
+                ":eventId",
+                "available"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "8e7d4da2-9a60-4c9c-9eaf-04f7900f49bb"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetByBookingId",
+          "id": "e52a0aff-f6b1-414e-a852-5384788c7003",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tickets/booking/:bookingId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tickets",
+                "booking",
+                ":bookingId"
+              ],
+              "variable": [
+                {
+                  "key": "bookingId",
+                  "value": "BOOKING_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GenerateByEvent",
+          "id": "0d2f7fe3-b6ef-48ce-b2e8-8e6e8747a337",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventId\": \"EVENT_ID_HERE\",\n  \"priceBasic\": 200000,\n  \"priceVIP\": 400000,\n  \"priceVVIP\": 700000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tickets/generate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tickets",
+                "generate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateStatus",
+          "id": "64a1a7c2-973b-4f86-a0bc-e12c939bb686",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": 2,\n  \"bookingId\": \"BOOKING_ID_HERE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tickets/:id/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tickets",
+                ":id",
+                "status"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "TICKET_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "id": "56812827-9536-43c7-a288-d962fa956eb7",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tickets/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tickets",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "TICKET_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "03056bb7-313e-4842-8573-924ed2f73f29"
+    },
+    {
+      "name": "6. Bookings",
+      "item": [
+        {
+          "name": "Create",
+          "id": "140d720e-9a42-4557-bfbf-b55790a0a7da",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\n  \"tickets\": [\"5fcc152a-c3f3-11f1-8896-002b67aa92f3\", \"5fcc14d0-c3f3-11f1-8896-002b67aa92f3\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bookings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetById",
+          "id": "51c8a13e-4c43-4547-bf5c-bb979ff6dd24",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bookings/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bookings",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "BOOKING_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetByUserId",
+          "id": "46a099c4-d3b3-4283-9c9d-fbb227743c3f",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bookings/byuser/:userId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bookings",
+                "byuser",
+                ":userId"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "USER_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetExpired",
+          "id": "76d72ca9-2098-4a70-bfae-ae81e0cdb6b5",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bookings/expired",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bookings",
+                "expired"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateStatus",
+          "id": "6552ace7-58fe-4370-8180-c5d78a77b6bc",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/bookings/:id/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bookings",
+                ":id",
+                "status"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "BOOKING_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "id": "fd112192-291a-4e1e-a4bc-8dcd848a4c0c",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bookings/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bookings",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "BOOKING_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "ebe33a98-3b61-437f-bcaf-0be6edda3257"
+    },
+    {
+      "name": "7. Payments",
+      "item": [
+        {
+          "name": "Create",
+          "id": "4c96c097-f1f0-4632-9f93-ce8d208f0c3d",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"BookingID\": \"BOOKING_ID_HERE\",\n  \"PaymentMethod\": \"MOMO\",\n  \"Amount\": 500000,\n  \"Status\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetByBookingId",
+          "id": "3d312c48-233a-48e0-a481-367e65965b2e",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/payments/booking/:bookingId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                "booking",
+                ":bookingId"
+              ],
+              "variable": [
+                {
+                  "key": "bookingId",
+                  "value": "BOOKING_ID_HERE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateStatus",
+          "id": "3d8f8172-88b9-49d6-8c32-90aba773098d",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactionId\": \"TRANS_998877\",\n  \"status\": 3,\n  \"paidAt\": \"2026-10-09 18:00:00\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payments/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "c3a2be76-cc56-4159-b8dd-4e0a6ebe9d42"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "bf1b3842-457e-4f5c-9aa8-8eef494ff369"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3OWFkZmZmYi1kNGE3LTQ1M2YtODQzNC02Zjk0MTYzZWMxMjEiLCJVc2VyTmFtZSI6ImFkbWluIiwiUm9sZSI6MywiaWF0IjoxNzkxNTUxMDc1LCJleHAiOjE3OTE2Mzc0NzV9.8BG6wBiLlhGI5MNiK36ybP88mhHx9rEuOEQJ_tTmYUo",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "462c3c7b-c97f-415d-8ef1-b5af3fd08bc5",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "0b21bb12-66ec-47f9-a45a-b2636f156a79",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "854a57df-6ad0-4bee-ab6f-5c7b3ec65188",
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api"
+    },
+    {
+      "id": "9261df50-6cd1-4513-9d93-fd0ccce60222",
+      "key": "bearerToken",
+      "value": ""
+    },
+    {
+      "id": "adb2d690-95b0-40a9-8828-e37a109f767c",
+      "key": "EVENT_ID_HERE",
+      "value": ""
+    },
+    {
+      "id": "2ec4d876-d679-4d05-b063-d59e444fabc3",
+      "key": "TICKET_ID_HERE",
+      "value": ""
+    },
+    {
+      "id": "a7b10a32-f8fe-4996-a6e5-502de65edb7a",
+      "key": "BOOKING_ID_HERE",
+      "value": ""
+    },
+    {
+      "id": "cc5d1437-23e5-41c4-9bbd-f8da11e5fd35",
+      "key": "TICKET_ID_1",
+      "value": ""
+    },
+    {
+      "id": "4fa80555-41b5-4e2f-acb6-215cfb9e39f7",
+      "key": "TICKET_ID_2",
+      "value": ""
+    }
+  ]
+}
