@@ -1,4 +1,5 @@
 const { EventService } = require('../Services');
+const { ResponseUtil } = require('../Utils');
 
 class EventController {
     constructor(db) {
@@ -10,9 +11,9 @@ class EventController {
             const pageIndex = parseInt(req.query.pageIndex) || 1;
             const pageSize = parseInt(req.query.pageSize) || 10;
             const events = await this.eventService.getAll(pageIndex, pageSize);
-            return res.json({ success: true, data: events });
+            return ResponseUtil.success(res, events, 'Success');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
@@ -21,11 +22,11 @@ class EventController {
             const { id } = req.params;
             const event = await this.eventService.getById(id);
             if (!event) {
-                return res.status(404).json({ success: false, message: 'Không tìm thấy sự kiện' });
+                return ResponseUtil.error(res, 'Event not found', 404);
             }
-            return res.json({ success: true, data: event });
+            return ResponseUtil.success(res, event, 'Success');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
@@ -40,9 +41,9 @@ class EventController {
                 maxPrice: maxPrice ? parseFloat(maxPrice) : null,
                 sortBy: sortBy || null
             });
-            return res.json({ success: true, data: events });
+            return ResponseUtil.success(res, events, 'Success');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
@@ -50,9 +51,9 @@ class EventController {
         try {
             const userId = req.user ? req.user.UserID : req.body.UserID;
             const newEvent = await this.eventService.insert(req.body, userId);
-            return res.status(201).json({ success: true, data: newEvent });
+            return ResponseUtil.success(res, newEvent, 'Event created successfully', 201);
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
@@ -61,9 +62,20 @@ class EventController {
             const { id } = req.params;
             const eventData = { ...req.body, EventID: id };
             const updatedEvent = await this.eventService.update(eventData);
-            return res.json({ success: true, data: updatedEvent });
+            return ResponseUtil.success(res, updatedEvent, 'Event updated successfully');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
+        }
+    }
+
+    async updateStatus(req, res) {
+        try {
+            const { id } = req.params;
+            const { status } = req.body;
+            await this.eventService.updateStatus(id, status);
+            return ResponseUtil.success(res, null, 'Event status updated successfully');
+        } catch (error) {
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
@@ -71,9 +83,9 @@ class EventController {
         try {
             const { id } = req.params;
             await this.eventService.delete(id);
-            return res.json({ success: true, message: 'Xóa sự kiện thành công' });
+            return ResponseUtil.success(res, null, 'Event deleted successfully');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 }

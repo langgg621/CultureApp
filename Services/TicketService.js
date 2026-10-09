@@ -18,37 +18,32 @@ class TicketService {
         const [rows] = await this.db.query('CALL usp_Ticket_GetByEventID(?)', [eventId]);
         return (rows[0] || []).map(row => Ticket.fromDatabaseRow(row));
     }
+    async getAvailableByEvent(eventId) {
+        const [rows] = await this.db.query('CALL usp_Ticket_GetAvailableByEvent(?)', [eventId]);
+        return (rows[0] || []).map(row => Ticket.fromDatabaseRow(row));
+    }
 
-    async insert(ticketData) {
-        const ticket = ticketData instanceof Ticket ? ticketData : new Ticket(ticketData);
-        await this.db.query('CALL usp_Ticket_Insert(?, ?, ?, ?, ?)', [
-            ticket.TicketID = IdGenerator.generateId(),
-            ticket.EventID,
-            ticket.SeatRow,
-            ticket.SeatNumber,
-            ticket.Price
+    async getByBookingId(bookingId) {
+        const [rows] = await this.db.query('CALL usp_Ticket_GetByBookingID(?)', [bookingId]);
+        return (rows[0] || []).map(row => Ticket.fromDatabaseRow(row));
+    }
+
+    async generateByEvent(eventId, priceBasic, priceVIP, priceVVIP) {
+        await this.db.query('CALL usp_Ticket_GenerateByEvent(?, ?, ?, ?)', [
+            eventId,
+            priceBasic,
+            priceVIP,
+            priceVVIP
         ]);
         return true;
     }
 
-    async update(ticketData) {
-        const ticket = ticketData instanceof Ticket ? ticketData : new Ticket(ticketData);
-        await this.db.query('CALL usp_Ticket_Update(?, ?, ?, ?)', [
-            ticket.TicketID,
-            ticket.SeatRow,
-            ticket.SeatNumber,
-            ticket.Price
+    async updateStatus(ticketId, status, bookingId = null) {
+        await this.db.query('CALL usp_Ticket_UpdateStatus(?, ?, ?)', [
+            ticketId,
+            status,
+            bookingId
         ]);
-        return ticket;
-    }
-
-    async updateStatus(ticketId, status, bookingId) {
-        await this.db.query('CALL usp_Ticket_UpdateStatus(?, ?, ?)', [ticketId, status, bookingId]);
-        return true;
-    }
-
-    async delete(ticketId) {
-        await this.db.query('CALL usp_Ticket_Delete(?)', [ticketId]);
         return true;
     }
 }

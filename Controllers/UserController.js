@@ -1,37 +1,50 @@
 const { UserService } = require('../Services');
-const { ResponseUtil, IdGenerator, DateTimeUtil } = require('../Utils');
+const { ResponseUtil } = require('../Utils');
+
 class UserController {
     constructor(db) {
         this.userService = new UserService(db);
     }
 
-    async getByUserName(req, res) {
+    async getAll(req, res) {
         try {
-            const { username } = req.params;
-            const user = await this.userService.getByUserName(username);
-            if (!user) {
-                return res.status(404).json({ success: false, message: 'User not found' });
-            }
-            return res.json({ success: true, data: user });
+            const pageIndex = parseInt(req.query.pageIndex) || 1;
+            const pageSize = parseInt(req.query.pageSize) || 10;
+            const users = await this.userService.getAll(pageIndex, pageSize);
+            return ResponseUtil.success(res, users, 'Success');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
+        }
+    }
+
+    async getById(req, res) {
+        try {
+            const { id } = req.params;
+            const user = await this.userService.getById(id);
+            if (!user) {
+                return ResponseUtil.error(res, 'User not found', 404);
+            }
+            return ResponseUtil.success(res, user, 'Success');
+        } catch (error) {
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
     async register(req, res) {
         try {
             const newUser = await this.userService.insert(req.body);
-            return res.status(201).json({ success: true, data: newUser });
+            return ResponseUtil.success(res, newUser, 'User registered successfully', 201);
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
+
     async login(req, res) {
         try {
             const { UserName, Password } = req.body;
 
             if (!UserName || !Password) {
-                return ResponseUtil.error(res, 'The username and password must not be left blank.', 400);
+                return ResponseUtil.error(res, 'Username and password cannot be blank.', 400);
             }
 
             const result = await this.userService.login(UserName, Password);
@@ -40,25 +53,39 @@ class UserController {
             return ResponseUtil.error(res, error.message, 400);
         }
     }
+
     async update(req, res) {
         try {
-            const { id } = req.params;
-            const userData = { ...req.body, UserID: id };
-            const updatedUser = await this.userService.update(userData);
-            return res.json({ success: true, data: updatedUser });
+            const updatedUser = await this.userService.update(req.body, req.user.UserID);
+            return ResponseUtil.success(res, updatedUser, 'User updated successfully');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
+        }
+    }
+
+    async updateRole(req, res) {
+        try {
+            const { id } = req.params;
+            const { role } = req.body;
+            await this.userService.updateRole(id, role);
+            return ResponseUtil.success(res, null, 'User role updated successfully');
+        } catch (error) {
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
     async changePassword(req, res) {
         try {
-            const { id } = req.params;
-            const { newPassword } = req.body;
-            await this.userService.changePassword(id, newPassword);
-            return res.json({ success: true, message: 'Password changed successfully.' });
+            const { oldPassword, newPassword } = req.body;
+
+            if (!oldPassword || !newPassword) {
+                return ResponseUtil.error(res, 'Both old and new passwords are required.', 400);
+            }
+
+            await this.userService.changePassword(req.user.UserID, oldPassword, newPassword);
+            return ResponseUtil.success(res, null, 'Password changed successfully');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 400);
         }
     }
 
@@ -66,9 +93,9 @@ class UserController {
         try {
             const { id } = req.params;
             await this.userService.deleteAccount(id);
-            return res.json({ success: true, message: 'Account successfully deleted.' });
+            return ResponseUtil.success(res, null, 'Account deleted successfully');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 }

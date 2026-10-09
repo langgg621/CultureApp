@@ -10,8 +10,9 @@ module.exports = (db) => {
     router.get('/', (req, res) => eventController.getAll(req, res));
     router.get('/search', (req, res) => eventController.search(req, res));
     router.get('/:id', (req, res) => eventController.getById(req, res));
-    router.post('/insert',ValidateMiddleware.validateEventCreate, (req, res) => eventController.create(req, res));
+    router.post('/insert', ValidateMiddleware.validateEventCreate, (req, res) => eventController.create(req, res));
     router.put('/:id', (req, res) => eventController.update(req, res));
+    router.patch('/:id/status', (req, res) => eventController.updateStatus(req, res));
     router.delete('/:id', (req, res) => eventController.delete(req, res));
 
     return router;

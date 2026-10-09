@@ -83,13 +83,6 @@ class ValidateMiddleware {
 
         next();
     }
-    static validateBookingCreate(req, res, next) {
-        const { EventID, UserID } = req.body;
-        if (!EventID || !UserID) {
-            return ResponseUtil.error(res, 'Missing EventID or UserID information.', 400);
-        }
-        next();
-    }
 }
 
 module.exports = ValidateMiddleware;

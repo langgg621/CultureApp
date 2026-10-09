@@ -5,7 +5,9 @@ class Venue {
         VenueAddress = '',
         Capacity = 0,
         SeatingRow = 0,
-        SeatingCol = ''
+        SeatingCol = '',
+        VipRow =0,
+        VVipRow =0,
     } = {}) {
         this.VenueID = VenueID;
         this.VenueName = VenueName;
@@ -13,6 +15,8 @@ class Venue {
         this.Capacity = Capacity;
         this.SeatingRow = SeatingRow;
         this.SeatingCol = SeatingCol;
+        this.VVipRow = VVipRow;
+        this.VipRow = VipRow;
     }
 
     toDatabaseRow() {
@@ -22,7 +26,9 @@ class Venue {
             VenueAddress: this.VenueAddress,
             Capacity: this.Capacity,
             SeatingRow: this.SeatingRow,
-            SeatingCol: this.SeatingCol
+            SeatingCol: this.SeatingCol,
+            VVipRow: this.VVipRow,
+            VipRow: this.VipRow
         };
     }
 
@@ -34,7 +40,9 @@ class Venue {
             VenueAddress: row.VenueAddress,
             Capacity: row.Capacity,
             SeatingRow: row.SeatingRow,
-            SeatingCol: row.SeatingCol
+            SeatingCol: row.SeatingCol,
+            VVipRow: row.VVipRow,
+            VipRow: row.VipRow
         });
     }
 }

@@ -1,4 +1,5 @@
 const { BookingService } = require('../Services');
+const { ResponseUtil } = require('../Utils');
 
 class BookingController {
     constructor(db) {
@@ -9,9 +10,12 @@ class BookingController {
         try {
             const { id } = req.params;
             const booking = await this.bookingService.getById(id);
-            return res.json({ success: true, data: booking });
+            if (!booking) {
+                return ResponseUtil.error(res, 'Booking not found', 404);
+            }
+            return ResponseUtil.success(res, booking, 'Success');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
@@ -19,27 +23,29 @@ class BookingController {
         try {
             const { userId } = req.params;
             const bookings = await this.bookingService.getByUserId(userId);
-            return res.json({ success: true, data: bookings });
+            return ResponseUtil.success(res, bookings, 'Success');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
     async getExpired(req, res) {
         try {
             const expiredBookings = await this.bookingService.getExpired();
-            return res.json({ success: true, data: expiredBookings });
+            return ResponseUtil.success(res, expiredBookings, 'Success');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
     async create(req, res) {
         try {
-            const result = await this.bookingService.insert(req.body);
-            return res.status(201).json({ success: true, data: result });
+            const userIdFromToken = req.user ? req.user.UserID : req.body.UserID; 
+            const bookingData = req.body; 
+            const result = await this.bookingService.insert(bookingData, userIdFromToken);
+            return ResponseUtil.success(res, result, 'Booking created successfully', 201);
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 400);
         }
     }
 
@@ -48,9 +54,9 @@ class BookingController {
             const { id } = req.params;
             const { status } = req.body;
             await this.bookingService.updateStatus(id, status);
-            return res.json({ success: true, message: 'Cập nhật trạng thái đặt vé thành công' });
+            return ResponseUtil.success(res, null, 'Booking status updated successfully');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 
@@ -58,9 +64,9 @@ class BookingController {
         try {
             const { id } = req.params;
             await this.bookingService.delete(id);
-            return res.json({ success: true, message: 'Xóa đặt vé thành công' });
+            return ResponseUtil.success(res, null, 'Booking deleted successfully');
         } catch (error) {
-            return res.status(500).json({ success: false, message: error.message });
+            return ResponseUtil.error(res, error.message, 500);
         }
     }
 }

@@ -11,7 +11,7 @@ class Category {
         this.Name = Name;
         this.IsActive = IsActive;
         this.Description = Description;
-        this.CategoryID = CreateDate;
+        this.CreateDate = CreateDate;
         this.UpdateDate = UpdateDate;
     }
 

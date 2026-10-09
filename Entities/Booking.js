@@ -1,3 +1,5 @@
+const Ticket = require("./Ticket");
+
 class Booking {
     constructor({
         BookingID = null,
@@ -9,7 +11,8 @@ class Booking {
         Updatedate_Tick = null,
         ExpiredAt = null,
         Status = 1, // 1: pending, 2: confirmed, 3: cancelled
-        BookingCode = ''
+        BookingCode = '',
+        tickets = []
     } = {}) {
         this.BookingID = BookingID;
         this.EventID = EventID;
@@ -21,6 +24,7 @@ class Booking {
         this.ExpiredAt = ExpiredAt;
         this.Status = Status;
         this.BookingCode = BookingCode;
+        this.tickets = tickets;
     }
 
     toDatabaseRow() {
@@ -50,7 +54,8 @@ class Booking {
             Updatedate_Tick: row.Updatedate_Tick,
             ExpiredAt: row.ExpiredAt,
             Status: row.Status,
-            BookingCode: row.BookingCode
+            BookingCode: row.BookingCode,
+            tickets: tickets.map(ticket => ticket instanceof Ticket ? ticket:Ticket.fromDatabaseRow(ticket))
         });
     }
 }

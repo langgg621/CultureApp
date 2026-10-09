@@ -7,9 +7,7 @@ class Payment {
         TransactionID = null,
         PaidAt = null,
         CreatedTime = null,
-        CreatedTime_Tick = null,
         UpdateTime = null,
-        UpdateTime_Tick = null,
         Amount = 0.00
     } = {}) {
         this.PaymentID = PaymentID;
@@ -19,9 +17,7 @@ class Payment {
         this.TransactionID = TransactionID;
         this.PaidAt = PaidAt;
         this.CreatedTime = CreatedTime;
-        this.CreatedTime_Tick = CreatedTime_Tick;
         this.UpdateTime = UpdateTime;
-        this.UpdateTime_Tick = UpdateTime_Tick;
         this.Amount = Amount;
     }
 
@@ -34,9 +30,7 @@ class Payment {
             TransactionID: this.TransactionID,
             PaidAt: this.PaidAt,
             CreatedTime: this.CreatedTime,
-            CreatedTime_Tick: this.CreatedTime_Tick,
             UpdateTime: this.UpdateTime,
-            UpdateTime_Tick: this.UpdateTime_Tick,
             Amount: this.Amount
         };
     }
@@ -51,9 +45,7 @@ class Payment {
             TransactionID: row.TransactionID,
             PaidAt: row.PaidAt,
             CreatedTime: row.CreatedTime,
-            CreatedTime_Tick: row.CreatedTime_Tick,
             UpdateTime: row.UpdateTime,
-            UpdateTime_Tick: row.UpdateTime_Tick,
             Amount: row.Amount
         });
     }

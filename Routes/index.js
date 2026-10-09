@@ -5,7 +5,7 @@ const ticketRoutes = require('./ticketRoutes');
 const userRoutes = require('./userRoutes');
 const venueRoutes = require('./venueRoutes');
 const categoryRoutes = require('./categoryRoutes');
-
+const paymentRoutes = require('./paymentRoutes');
 module.exports = (db) => {
     const router = express.Router();
 
@@ -14,6 +14,8 @@ module.exports = (db) => {
     router.use('/tickets', ticketRoutes(db));
     router.use('/users', userRoutes(db));
     router.use('/venues', venueRoutes(db));
-    router.use('/category', categoryRoutes(db));
+    router.use('/categories', categoryRoutes(db));
+    router.use('/payments', paymentRoutes(db));
+
     return router;
 };

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const categoryController = require('../Controllers');
-const { AuthMiddleware, ValidateMiddleware } = require('../Middlewares');
 const CategoryController = require('../Controllers/CategoryController');
+const { AuthMiddleware, ValidateMiddleware } = require('../Middlewares');
+
 module.exports = (db) => {
     const categoryController = new CategoryController(db);
     router.use(AuthMiddleware.authenticateToken);
@@ -14,4 +14,4 @@ module.exports = (db) => {
     router.delete('/:id', (req, res) => categoryController.delete(req, res));
 
     return router;
-}
+};

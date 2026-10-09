@@ -11,7 +11,10 @@ class Event {
         UpdateDate = null,
         CreateDate_Tick = null,
         UpdateDate_Tick = null,
-        Status = null
+        Status = null,
+        PriceBasic =0,
+        PriceVIP = 0,
+        PriceVVIP = 0
     } = {}) {
         this.EventID = EventID;
         this.EventName = EventName;
@@ -25,6 +28,9 @@ class Event {
         this.CreateDate_Tick = CreateDate_Tick;
         this.UpdateDate_Tick = UpdateDate_Tick;
         this.Status = Status;
+        this.PriceBasic = PriceBasic;
+        this.PriceVIP = PriceVIP;
+        this.PriceVVIP = PriceVVIP;
     }
 
     toDatabaseRow() {
@@ -40,7 +46,10 @@ class Event {
             UpdateDate: this.UpdateDate,
             CreateDate_Tick: this.CreateDate_Tick,
             UpdateDate_Tick: this.UpdateDate_Tick,
-            Status: this.Status
+            Status: this.Status,
+            PriceBasic: this.PriceBasic,
+            PriceVIP:this.PriceVIP,
+            PriceVVIP: this.PriceVVIP
         };
     }
 
@@ -58,7 +67,10 @@ class Event {
             UpdateDate: row.UpdateDate,
             CreateDate_Tick: row.CreateDate_Tick,
             UpdateDate_Tick: row.UpdateDate_Tick,
-            Status: row.Status
+            Status: row.Status,
+            PriceBasic: row.PriceBasic,
+            PriceVIP: row.PriceVIP,
+            PriceVVIP: row.PriceVVIP
         });
     }
 }

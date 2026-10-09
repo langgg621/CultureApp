@@ -4,6 +4,8 @@ const TicketService = require('./TicketService');
 const UserService = require('./UserService');
 const VenueService = require('./VenueService');
 const CategoryService = require('./CategoryService');
+const PaymentService = require('./PaymentService');
+
 
 module.exports = {
     BookingService,
@@ -11,5 +13,6 @@ module.exports = {
     TicketService,
     UserService,
     VenueService,
-    CategoryService
+    CategoryService,
+    PaymentService
 };
