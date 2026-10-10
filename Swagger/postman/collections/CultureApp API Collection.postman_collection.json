@@ -1109,7 +1109,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\n  \"tickets\": [\"5fcc152a-c3f3-11f1-8896-002b67aa92f3\", \"5fcc14d0-c3f3-11f1-8896-002b67aa92f3\"]\n}"
+              "raw": "{\n\n  \"tickets\": [\"afce3589-c3f2-11f1-8896-002b67aa92f3\", \"0c358246-77d3-48c2-8005-2aa5c6632a7b\"]\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/bookings",
@@ -1272,7 +1272,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"BookingID\": \"BOOKING_ID_HERE\",\n  \"PaymentMethod\": \"MOMO\",\n  \"Amount\": 500000,\n  \"Status\": 2\n}"
+              "raw": "{\n  \"BookingID\": \"BOOKING_ID_HERE\",\n  \"PaymentMethod\": 1,\n  \"Amount\": 500000,\n  \"Status\": 2\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/payments",
@@ -1348,6 +1348,47 @@
         }
       ],
       "id": "bf1b3842-457e-4f5c-9aa8-8eef494ff369"
+    },
+    {
+      "name": "8. Statistics",
+      "item": [
+        {
+          "name": "Get Statistics",
+          "id": "9ab393fd-f010-48e8-8995-002ac05e78a0",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/statistics?startDate=2026-10-01 00:00:00&endDate=2026-10-31 23:59:59&venueId=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "statistics"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2026-10-01 00:00:00",
+                  "uuid": "1984334a-00f3-4346-817e-1f8801e503b1"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-10-31 23:59:59",
+                  "uuid": "68cb550e-521b-48b2-a343-27700474c948"
+                },
+                {
+                  "key": "venueId",
+                  "value": "",
+                  "uuid": "38336583-bedf-44ec-aaf4-2d749747ec16"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "9f72ea55-3f9d-4725-8c38-8fc26953e31e"
     }
   ],
   "auth": {
@@ -1362,37 +1403,37 @@
   },
   "variable": [
     {
-      "id": "72a82dd5-c9f6-4a63-9e56-e092990c904d",
+      "id": "13c36118-6871-4311-8010-b33308fd7cd3",
       "key": "baseUrl",
       "value": "http://localhost:3000/api"
     },
     {
-      "id": "7f8be18b-b8bc-4809-9292-494043fe7b58",
+      "id": "f2020069-cde0-4e5b-a143-7ad7888100b1",
       "key": "bearerToken",
       "value": ""
     },
     {
-      "id": "315bf291-b1ff-407f-b028-29cf26ef8066",
+      "id": "10e57b73-5995-41b5-a8f0-62f9e0b1a7ed",
       "key": "EVENT_ID_HERE",
       "value": ""
     },
     {
-      "id": "774d22f3-4b86-4dcc-9b08-b6dee4ef5603",
+      "id": "a31db35b-afa2-4663-b9b8-d39529452dac",
       "key": "TICKET_ID_HERE",
       "value": ""
     },
     {
-      "id": "66b099aa-24c7-48c7-b4f0-b261e49bbc09",
+      "id": "b5a04538-a87d-4775-befe-ad8ba675bebb",
       "key": "BOOKING_ID_HERE",
       "value": ""
     },
     {
-      "id": "71a53674-b405-40d6-8a91-52e91477a851",
+      "id": "fdbc7075-30cb-4e6e-b257-135693f4f13b",
       "key": "TICKET_ID_1",
       "value": ""
     },
     {
-      "id": "21303df0-5191-4998-9448-a1f3dcdb9a7a",
+      "id": "6171f5ff-4cce-4fce-99b8-70dee717b5a0",
       "key": "TICKET_ID_2",
       "value": ""
     }

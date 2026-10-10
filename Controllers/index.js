@@ -5,7 +5,7 @@ const UserController = require('./UserController');
 const VenueController = require('./VenueController');
 const PaymentController = require('./PaymentController');
 const CategoryController = require('./CategoryController');
-
+const StatisticsController = require('./StatisticsController');
 module.exports = {
     BookingController,
     EventController,
@@ -13,5 +13,6 @@ module.exports = {
     UserController,
     VenueController,
     PaymentController,
-    CategoryController
+    CategoryController,
+    StatisticsController
 };

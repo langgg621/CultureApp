@@ -6,6 +6,8 @@ const userRoutes = require('./userRoutes');
 const venueRoutes = require('./venueRoutes');
 const categoryRoutes = require('./categoryRoutes');
 const paymentRoutes = require('./paymentRoutes');
+const statisticsRoutes = require('./statisticsRoutes');
+
 module.exports = (db) => {
     const router = express.Router();
 
@@ -16,6 +18,6 @@ module.exports = (db) => {
     router.use('/venues', venueRoutes(db));
     router.use('/categories', categoryRoutes(db));
     router.use('/payments', paymentRoutes(db));
-
+    router.use('/statistics', statisticsRoutes(db));
     return router;
 };
