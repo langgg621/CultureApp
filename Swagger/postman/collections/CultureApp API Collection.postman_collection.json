@@ -1355,70 +1355,44 @@
     "bearer": [
       {
         "key": "token",
-        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3OWFkZmZmYi1kNGE3LTQ1M2YtODQzNC02Zjk0MTYzZWMxMjEiLCJVc2VyTmFtZSI6ImFkbWluIiwiUm9sZSI6MywiaWF0IjoxNzkxNTUxMDc1LCJleHAiOjE3OTE2Mzc0NzV9.8BG6wBiLlhGI5MNiK36ybP88mhHx9rEuOEQJ_tTmYUo",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3OWFkZmZmYi1kNGE3LTQ1M2YtODQzNC02Zjk0MTYzZWMxMjEiLCJVc2VyTmFtZSI6ImFkbWluIiwiUm9sZSI6MywiaWF0IjoxNzkxNjQ0NjczLCJleHAiOjE3OTE3MzEwNzN9.qxpiAe7IeHhqzEzEN7ynfHh3r3DPNb4R7paR-nSPD_M",
         "type": "string"
       }
     ]
   },
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "id": "462c3c7b-c97f-415d-8ef1-b5af3fd08bc5",
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "id": "0b21bb12-66ec-47f9-a45a-b2636f156a79",
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
   "variable": [
     {
-      "id": "854a57df-6ad0-4bee-ab6f-5c7b3ec65188",
+      "id": "72a82dd5-c9f6-4a63-9e56-e092990c904d",
       "key": "baseUrl",
       "value": "http://localhost:3000/api"
     },
     {
-      "id": "9261df50-6cd1-4513-9d93-fd0ccce60222",
+      "id": "7f8be18b-b8bc-4809-9292-494043fe7b58",
       "key": "bearerToken",
       "value": ""
     },
     {
-      "id": "adb2d690-95b0-40a9-8828-e37a109f767c",
+      "id": "315bf291-b1ff-407f-b028-29cf26ef8066",
       "key": "EVENT_ID_HERE",
       "value": ""
     },
     {
-      "id": "2ec4d876-d679-4d05-b063-d59e444fabc3",
+      "id": "774d22f3-4b86-4dcc-9b08-b6dee4ef5603",
       "key": "TICKET_ID_HERE",
       "value": ""
     },
     {
-      "id": "a7b10a32-f8fe-4996-a6e5-502de65edb7a",
+      "id": "66b099aa-24c7-48c7-b4f0-b261e49bbc09",
       "key": "BOOKING_ID_HERE",
       "value": ""
     },
     {
-      "id": "cc5d1437-23e5-41c4-9bbd-f8da11e5fd35",
+      "id": "71a53674-b405-40d6-8a91-52e91477a851",
       "key": "TICKET_ID_1",
       "value": ""
     },
     {
-      "id": "4fa80555-41b5-4e2f-acb6-215cfb9e39f7",
+      "id": "21303df0-5191-4998-9448-a1f3dcdb9a7a",
       "key": "TICKET_ID_2",
       "value": ""
     }

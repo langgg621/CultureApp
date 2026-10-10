@@ -3,7 +3,6 @@ const express = require('express');
 const mysql = require('mysql2/promise');
 const routes = require('./Routes');
 const { errorHandler, notFoundHandler } = require('./Middlewares');
-
 // Initialize app
 const app = express();
 
