@@ -1389,6 +1389,26 @@
         }
       ],
       "id": "9f72ea55-3f9d-4725-8c38-8fc26953e31e"
+    },
+    {
+      "name": "Get docs",
+      "id": "a3f7232b-d263-4357-8971-d8a4047ab3fe",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/docs",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "docs"
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "auth": {
@@ -1396,44 +1416,44 @@
     "bearer": [
       {
         "key": "token",
-        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3OWFkZmZmYi1kNGE3LTQ1M2YtODQzNC02Zjk0MTYzZWMxMjEiLCJVc2VyTmFtZSI6ImFkbWluIiwiUm9sZSI6MywiaWF0IjoxNzkxNjQ0NjczLCJleHAiOjE3OTE3MzEwNzN9.qxpiAe7IeHhqzEzEN7ynfHh3r3DPNb4R7paR-nSPD_M",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3OWFkZmZmYi1kNGE3LTQ1M2YtODQzNC02Zjk0MTYzZWMxMjEiLCJVc2VyTmFtZSI6ImFkbWluIiwiUm9sZSI6MywiaWF0IjoxNzkxNjk3MTEwLCJleHAiOjE3OTE3ODM1MTB9.hYDY6DKTS1LfjWbJNBgJm1y8Ryq_fWIAQMdrtqW9o2Q",
         "type": "string"
       }
     ]
   },
   "variable": [
     {
-      "id": "13c36118-6871-4311-8010-b33308fd7cd3",
+      "id": "ebc111b2-dde5-45f0-9eaf-caed34176013",
       "key": "baseUrl",
       "value": "http://localhost:3000/api"
     },
     {
-      "id": "f2020069-cde0-4e5b-a143-7ad7888100b1",
+      "id": "21a9e2f5-1d56-4031-85d0-8f22a0a4f810",
       "key": "bearerToken",
       "value": ""
     },
     {
-      "id": "10e57b73-5995-41b5-a8f0-62f9e0b1a7ed",
+      "id": "20dc6588-6534-4dad-a187-58808a610779",
       "key": "EVENT_ID_HERE",
       "value": ""
     },
     {
-      "id": "a31db35b-afa2-4663-b9b8-d39529452dac",
+      "id": "56c7379b-b8bf-4b21-b0b7-1bd46b1ca7a3",
       "key": "TICKET_ID_HERE",
       "value": ""
     },
     {
-      "id": "b5a04538-a87d-4775-befe-ad8ba675bebb",
+      "id": "c3be4ef7-45a7-412a-8e82-1c8b1a2d3613",
       "key": "BOOKING_ID_HERE",
       "value": ""
     },
     {
-      "id": "fdbc7075-30cb-4e6e-b257-135693f4f13b",
+      "id": "99f7a67f-849a-469c-aeae-93ed043bb369",
       "key": "TICKET_ID_1",
       "value": ""
     },
     {
-      "id": "6171f5ff-4cce-4fce-99b8-70dee717b5a0",
+      "id": "3f7ce31a-517b-4361-a103-b906ae208872",
       "key": "TICKET_ID_2",
       "value": ""
     }
