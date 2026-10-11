@@ -19,8 +19,8 @@ class UserController {
 
     async getById(req, res) {
         try {
-            const { id } = req.params;
-            const user = await this.userService.getById(id);
+            const  userIdFromToken  = req.user.UserID;;
+            const user = await this.userService.getById(userIdFromToken);
             if (!user) {
                 return ResponseUtil.error(res, 'User not found', 404);
             }

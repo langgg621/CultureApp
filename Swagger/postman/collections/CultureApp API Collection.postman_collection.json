@@ -78,7 +78,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/users?pageIndex=1&pageSize=10",
+              "raw": "{{baseUrl}}/users",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -88,11 +88,15 @@
               "query": [
                 {
                   "key": "pageIndex",
-                  "value": "1"
+                  "value": "1",
+                  "uuid": "f71c1b7c-f06e-466c-adea-67f7e10b9559",
+                  "disabled": true
                 },
                 {
                   "key": "pageSize",
-                  "value": "10"
+                  "value": "10",
+                  "uuid": "e3e5c590-b16e-4b61-bfd2-55ec1b622a2f",
+                  "disabled": true
                 }
               ]
             }
@@ -111,7 +115,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiJkZTRkMWVmMC1lNzYyLTRlNzQtYTc3Ny03YzVhMjg0OWM4MWEiLCJVc2VyTmFtZSI6ImpvaG5fZG9lIiwiUm9sZSI6MSwiaWF0IjoxNzkxNTQzMjg0LCJleHAiOjE3OTE2Mjk2ODR9.VeVoPKBTtaEkdVawLILbXBToydVnjbrVtY7lSFp1gHY",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3OWFkZmZmYi1kNGE3LTQ1M2YtODQzNC02Zjk0MTYzZWMxMjEiLCJVc2VyTmFtZSI6ImFkbWluIiwiUm9sZSI6MywiaWF0IjoxNzkxNzExNjMzLCJleHAiOjE3OTE3OTgwMzN9.gLwB5IFzS-6jwFMkQlwLETD8fpZoB4D2Nu-q5PXLMto",
                   "type": "string"
                 }
               ]
@@ -128,14 +132,13 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/users/id/de4d1ef0-e762-4e74-a777-7c5a2849c81a",
+              "raw": "{{baseUrl}}/users/id",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "users",
-                "id",
-                "de4d1ef0-e762-4e74-a777-7c5a2849c81a"
+                "id"
               ]
             }
           },
@@ -1416,44 +1419,44 @@
     "bearer": [
       {
         "key": "token",
-        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3OWFkZmZmYi1kNGE3LTQ1M2YtODQzNC02Zjk0MTYzZWMxMjEiLCJVc2VyTmFtZSI6ImFkbWluIiwiUm9sZSI6MywiaWF0IjoxNzkxNjk3MTEwLCJleHAiOjE3OTE3ODM1MTB9.hYDY6DKTS1LfjWbJNBgJm1y8Ryq_fWIAQMdrtqW9o2Q",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3OWFkZmZmYi1kNGE3LTQ1M2YtODQzNC02Zjk0MTYzZWMxMjEiLCJVc2VyTmFtZSI6ImFkbWluIiwiUm9sZSI6MywiaWF0IjoxNzkxNzExNjMzLCJleHAiOjE3OTE3OTgwMzN9.gLwB5IFzS-6jwFMkQlwLETD8fpZoB4D2Nu-q5PXLMto",
         "type": "string"
       }
     ]
   },
   "variable": [
     {
-      "id": "ebc111b2-dde5-45f0-9eaf-caed34176013",
+      "id": "43ea815d-c713-43b7-b2f5-eeecece535d0",
       "key": "baseUrl",
       "value": "http://localhost:3000/api"
     },
     {
-      "id": "21a9e2f5-1d56-4031-85d0-8f22a0a4f810",
+      "id": "3a3c7ae3-03af-441e-bd31-4bc7ef05a9a4",
       "key": "bearerToken",
       "value": ""
     },
     {
-      "id": "20dc6588-6534-4dad-a187-58808a610779",
+      "id": "90f222fe-cbcf-4a31-9bf8-101156277bc3",
       "key": "EVENT_ID_HERE",
       "value": ""
     },
     {
-      "id": "56c7379b-b8bf-4b21-b0b7-1bd46b1ca7a3",
+      "id": "36e39538-1e95-4bb5-a27b-1fd32c905d9c",
       "key": "TICKET_ID_HERE",
       "value": ""
     },
     {
-      "id": "c3be4ef7-45a7-412a-8e82-1c8b1a2d3613",
+      "id": "0aaf19c7-1d0e-4e84-9507-b0deda0c54de",
       "key": "BOOKING_ID_HERE",
       "value": ""
     },
     {
-      "id": "99f7a67f-849a-469c-aeae-93ed043bb369",
+      "id": "4e3ac9cf-f3d8-4804-80ef-601c812f1670",
       "key": "TICKET_ID_1",
       "value": ""
     },
     {
-      "id": "3f7ce31a-517b-4361-a103-b906ae208872",
+      "id": "dd1c9f9c-6ad9-4a93-bcba-a5fa46bd48d0",
       "key": "TICKET_ID_2",
       "value": ""
     }

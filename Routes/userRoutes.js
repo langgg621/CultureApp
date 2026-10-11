@@ -16,7 +16,7 @@ module.exports = (db) => {
     router.patch('/:id/change-password', (req, res) => controller.changePassword(req, res));
 
     router.get('/', (req, res) => controller.getAll(req, res));
-    router.get('/id/:id', (req, res) => controller.getById(req, res));
+    router.get('/id', (req, res) => controller.getById(req, res));
 
     // Admin Routes
     router.patch('/:id/role', AuthMiddleware.authorizeRoles(3), (req, res) => controller.updateRole(req, res));
